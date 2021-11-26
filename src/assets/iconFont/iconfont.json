@@ -1,0 +1,23 @@
+{
+  "id": "2895900",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "25209584",
+      "name": "表单组件-表格",
+      "font_class": "biaodanzujian-biaoge-copy",
+      "unicode": "eb95",
+      "unicode_decimal": 60309
+    },
+    {
+      "icon_id": "25209350",
+      "name": "折线图",
+      "font_class": "zhexiantu-copy",
+      "unicode": "e6c0",
+      "unicode_decimal": 59072
+    }
+  ]
+}
