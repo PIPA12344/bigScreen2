@@ -1,8 +1,6 @@
 <template>
     <div class="no-border-table">
       <el-table
-        style="height: 80%"
-
         size="small"
         :data="tableData"
         :header-cell-style="{textAlign: 'center',padding: '0',height: '25px',backgroundColor: '#0f1326'}"
@@ -13,7 +11,7 @@
         }"
         :row-class-name="tableRowClassName"
         :header-row-class-name="'warning-row'"
-        :border="false"
+
         @row-click="rowClick"
       >
         <template slot="empty">
@@ -36,46 +34,11 @@
           label="CPU核数"
           width="70">
         </el-table-column>
-        <!--      <el-table-column-->
-        <!--        prop="cpuFrequency"-->
-        <!--        label="CPU频率"-->
-        <!--        width="80">-->
-        <!--      </el-table-column>-->
-        <!--      <el-table-column-->
-        <!--        prop="cpuUsage"-->
-        <!--        label="CPU使用率"-->
-        <!--        width="100">-->
-        <!--      </el-table-column>-->
         <el-table-column
           prop="totalMemory"
           label="总内存"
           width="75">
         </el-table-column>
-        <!--      <el-table-column-->
-        <!--        prop="memoryUsage"-->
-        <!--        label="内存使用率"-->
-        <!--        width="100">-->
-        <!--      </el-table-column>-->
-        <!--      <el-table-column-->
-        <!--        prop="usageRateOfC"-->
-        <!--        label="C盘使用率"-->
-        <!--        width="100">-->
-        <!--      </el-table-column>-->
-        <!--      <el-table-column-->
-        <!--        prop="maxUsageRate"-->
-        <!--        label="使用最多分区"-->
-        <!--        width="120">-->
-        <!--      </el-table-column>-->
-        <!--      <el-table-column-->
-        <!--        prop="numOfProcesses"-->
-        <!--        label="进程数"-->
-        <!--        width="100">-->
-        <!--      </el-table-column>-->
-        <!--      <el-table-column-->
-        <!--        prop="numOfServices"-->
-        <!--        label="运行服务"-->
-        <!--        width="100">-->
-        <!--      </el-table-column>-->
         <el-table-column
           label="操作"
           width="58"

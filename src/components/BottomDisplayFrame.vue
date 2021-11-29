@@ -1,5 +1,5 @@
 <template>
-  <dv-border-box-13 style="width: 100%;height: 170px;margin-top:20px;display: flex;">
+  <dv-border-box-13 :style="style">
     <div class="backGround">
       <span style="margin-top: 0;margin-left: 5px;height: 20px">
         <icon-svg icon-class="biaodanzujian-biaoge-copy" class="icon"/>
@@ -21,7 +21,17 @@ export default {
     ParameterTable
   },
   props: {
-    name: String
+    name: String,
+    height: Number
+  },
+  data() {
+    return {
+      style: {
+        width: '100%',
+        height: this.height+'px',
+        display: 'flex'
+      }
+    }
   }
 }
 </script>

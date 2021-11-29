@@ -22,7 +22,7 @@ export default {
       read: [],
       write: [],
       option: {
-        backgroundColor: '#0c1022',
+        backgroundColor: 'rgb(255,255,255,0)',
         // title: {
         //   link: 'http://localhost:8080/chart1',
         //   target: 'self',
@@ -106,8 +106,8 @@ export default {
         grid: {
           left: '20%',
           top: '10%',
-          width: '72%',
-          height: '80%',
+          width: '76%',
+          height: '70%',
         },
         yAxis: {
           z: 9,

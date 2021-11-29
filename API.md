@@ -31,5 +31,23 @@
  - max by (instance) (irate(windows_logical_disk_write_bytes_total[2m]))
 
 #MySql监控面板
+## 服务状态
+### tidb 
+- count(probe_success{tidb_cluster="", group="tidb"} == 1)
+### pd
+- count(probe_success{tidb_cluster="", group="pd"} == 1)
+### tikv
+- count(probe_success{tidb_cluster="", group="tikv"} == 1)
+### node_exporter
+- count(probe_success{tidb_cluster="", group="node_exporter"} == 1)
+### blackbox_exporter
+- count(probe_success{tidb_cluster="", group="blackbox_exporter"} == 1)
+### grafana
+- count(probe_success{tidb_cluster="", group="grafana"} == 1)
+
+
+
+
 ### 查询存储容量
 - pd_cluster_status{instance="192.168.1.140:2379",type="storage_capacity"}
+
