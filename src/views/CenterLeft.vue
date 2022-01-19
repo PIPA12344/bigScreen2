@@ -1,21 +1,21 @@
 <template>
-  <display-frame :name="'各主机CPU使用率'" :decoration-num="decorationNum" @chartChange="chartChange">
+  <center-display-frame1 :decoration-num="decorationNum" @chartChange="chartChange" :options="options" >
     <usage-rate-chart class="chart" ref="usage" v-if="chartNum===1" :name="'各主机CPU使用率'" :key="chartNum"/>
     <usage-rate-chart class="chart" ref="usage" v-if="chartNum===2" :name="'各主机内存使用率'" :key="chartNum"/>
     <disk-read-and-write-chart class="chart" ref="disk" v-if="chartNum===3"/>
-  </display-frame>
+  </center-display-frame1>
 </template>
 
 <script>
-import UsageRateChart from "@/components/usageRateChart/UsageRateChart";
-import DisplayFrame from "@/components/CenterDisplayFrame";
-import DiskReadAndWriteChart from "@/components/diskReadAndWriteChart/DiskReadAndWriteChart";
+import UsageRateChart from "@/components/chart/UsageRateChart";
+import CenterDisplayFrame1 from "@/components/displayFrame/CenterDisplayFrame1";
+import DiskReadAndWriteChart from "@/components/chart/DiskReadAndWriteChart";
 export default {
   name: "CenterLeft",
   components: {
     DiskReadAndWriteChart,
     UsageRateChart,
-    DisplayFrame
+    CenterDisplayFrame1
   },
   data() {
     return {
@@ -28,6 +28,20 @@ export default {
         '172.16.35.15:9182',
         '172.16.35.53:9182',
         '172.16.35.6:9182'
+      ],
+      options: [
+        {
+          value: 1,
+          label: '各主机CPU使用率'
+        },
+        {
+          value: 2,
+          label: '各主机内存使用率'
+        },
+        {
+          value: 3,
+          label:'各主机磁盘读写情况'
+        }
       ]
     }
   },

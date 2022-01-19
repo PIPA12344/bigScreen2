@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div id="hashBoard1" style="width: 100%;height: 40%"></div>
-    <div id="hashBoard2" style="width: 100%;height: 40%;margin-top: 30px"></div>
+    <div id="hashBoard1" style="width: 100%;height: 45%"></div>
+    <div id="hashBoard2" style="width: 100%;height: 45%;margin-top: 10px"></div>
   </div>
 </template>
 

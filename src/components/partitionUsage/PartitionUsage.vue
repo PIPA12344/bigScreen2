@@ -5,28 +5,28 @@
   </div>
   <br />
   <el-row>
-    <div style="color: white;font-size: 20px;float: left">C:</div>
+    <div style="color: white;font-size: 15px;float: left">C:</div>
   </el-row>
   <el-row>
-    <dv-percent-pond :config="config[0]" style="width:100%;height:30px;" />
+    <dv-percent-pond :config="config[0]" style="width:100%;height:25px;" />
   </el-row>
   <el-row>
-    <div style="color: white;font-size: 20px;float: left">D:</div>
+    <div style="color: white;font-size: 15px;float: left">D:</div>
   </el-row>
   <el-row>
-    <dv-percent-pond :config="config[1]" style="width:100%;height:30px;" />
+    <dv-percent-pond :config="config[1]" style="width:100%;height:25px;" />
   </el-row>
   <el-row>
-    <div style="color: white;font-size: 20px;float: left">E:</div>
+    <div style="color: white;font-size: 15px;float: left">E:</div>
   </el-row>
   <el-row>
-    <dv-percent-pond :config="config[2]" style="width:100%;height:30px;" />
+    <dv-percent-pond :config="config[2]" style="width:100%;height:25px;" />
   </el-row>
   <el-row>
-    <div style="color: white;font-size: 20px;float: left">HarddiskVolume1</div>
+    <div style="color: white;font-size: 15px;float: left">HarddiskVolume1</div>
   </el-row>
   <el-row>
-    <dv-percent-pond :config="config[3]" style="width:100%;height:30px;" />
+    <dv-percent-pond :config="config[3]" style="width:100%;height:25px;" />
   </el-row>
 </div>
 </template>

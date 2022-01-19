@@ -29,8 +29,7 @@
 ### 查询各主机磁盘读写情况
  - -max by (instance) (irate(windows_logical_disk_read_bytes_total[2m]))
  - max by (instance) (irate(windows_logical_disk_write_bytes_total[2m]))
-
-#MySql监控面板
+#Tidb 监控面板
 ## 服务状态
 ### tidb 
 - count(probe_success{tidb_cluster="", group="tidb"} == 1)
@@ -46,8 +45,25 @@
 - count(probe_success{tidb_cluster="", group="grafana"} == 1)
 
 
+------------------------
 
-
+### PD role 
+- pd_tso_role{tidb_cluster="", instance="192.168.1.140:2379", dc="global"}
 ### 查询存储容量
 - pd_cluster_status{instance="192.168.1.140:2379",type="storage_capacity"}
-
+### 当前存储大小
+- pd_cluster_status{tidb_cluster="",instance="192.168.1.140:2379",type="storage_size"}
+### 分区数量
+- pd_cluster_status{tidb_cluster="",instance="192.168.1.140:2379", type="leader_count"}
+### normal store
+- sum(pd_cluster_status{tidb_cluster="",instance="192.168.1.140:2379",type="store_up_count"})
+### cmds
+- histogram_quantile(0.99, sum(rate(grpc_server_handling_seconds_bucket{ instance="192.168.1.140:2379"}[5m])) by (grpc_method, le))
+### hanle
+- histogram_quantile(0.98, sum(rate(pd_client_request_handle_requests_duration_seconds_bucket{tidb_cluster=""}[30s])) by (type, le))
+- avg(rate(pd_client_request_handle_requests_duration_seconds_sum{tidb_cluster=""}[30s])) by (type) /  avg(rate(pd_client_request_handle_requests_duration_seconds_count{tidb_cluster=""}[30s])) by (type)
+## TiKV
+### Memory
+- avg(process_resident_memory_bytes{tidb_cluster="", job="tikv"}) by (instance)
+### Store size
+- sum(tikv_engine_size_bytes{tidb_cluster=""}) by (instance)

@@ -2,9 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-const Index = () => import('@/views2/index')
-const Index2 = () => import('@/views/index')
-const Test = () => import('@/components/WindowsTable')
+const Index = () => import('@/views/index')
 const routes = [
   {
     path: '/',
@@ -14,20 +12,12 @@ const routes = [
     path: '/index',
     component: Index,
     meta: {
-      title: 'Windows监控面板',
+      title: '监控面板',
     }
   },
-  {
-    path: '/index2',
-    component: Index2
-  },
-  {
-    path: '/test',
-    component: Test
-  }
 ]
 const router = new VueRouter({
-  mode: "history",
+  // mode: "history",
   routes
 })
 router.beforeEach((to, from, next) => {

@@ -6,7 +6,7 @@
       </span>
       <span style="margin-top: 5px">
 <!--        <div class="containerName">&nbsp&nbsp&nbsp{{realName}}&nbsp&nbsp</div>-->
-        <el-select v-model="value" @change="chartChange">
+        <el-select v-model="value" @change="chartChange" ref="select">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -27,36 +27,26 @@
 
 <script>
 export default {
-  name: "DisplayFrame",
+  name: "CenterDisplayFrame",
   props: {
     decorationNum: {
       type: Number | String,
       default: 3
     },
+    options: '',
+  },
+  beforeCreate() {
+    console.log(this.$refs.select)
+  },
+  mounted() {
   },
   data() {
     return {
-      realName: '各主机CPU使用率',
-      value: '各主机CPU使用率',
-      options: [
-        {
-          value: 1,
-          label: '各主机CPU使用率'
-        },
-        {
-          value: 2,
-          label: '各主机内存使用率'
-        },
-        {
-          value: 3,
-          label:'各主机磁盘读写情况'
-        }
-      ]
+      value: this.options[0].label,
     }
   },
   methods: {
     chartChange() {
-      console.log(this.value)
       this.$emit('chartChange',this.value)
     }
   }
@@ -67,7 +57,7 @@ export default {
   .container {
     display: flex;
     flex: 1;
-    height: 300px
+    height: 250px
   }
   .backGround {
     width: 90%;
@@ -96,17 +86,12 @@ export default {
   }
   >>>.el-input__inner {
     margin-top: -8px;
-
-    width: 180px;
     color:#c8c8da;
     background-color: rgba(255,255,255,0);
-    border-right-width: 0;
-    border-left-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
+    border: 0;
+    width: 160px
   }
    >>>.el-scrollbar__view >>>.el-select-dropdown__list {
     background-color: black;
   }
-
 </style>

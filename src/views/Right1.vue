@@ -1,13 +1,13 @@
 <template>
-  <bottom-display-frame :name="'mysql服务总览'" :height="250">
+  <bottom-display-frame :name="'TiDB服务总览'" :height="250">
     <mysql-table :service="service" :up="mysql.serviceData" style="margin: auto"></mysql-table>
   </bottom-display-frame>
 </template>
 
 <script>
 import MysqlTable from "@/components/MysqlTable";
-import BottomDisplayFrame from "@/components/BottomDisplayFrame";
-import MysqlData from "@/components/mysql/mysqlData";
+import BottomDisplayFrame from "@/components/displayFrame/BottomDisplayFrame";
+import MysqlData from "@/components/mysql/TidbData";
 export default {
   name: "Right1",
   components: {MysqlTable, BottomDisplayFrame},
@@ -23,7 +23,6 @@ export default {
   methods:  {
     getMysqlService() {
       this.mysql.getService()
-      console.log(this.mysql.serviceData)
     }
   }
 

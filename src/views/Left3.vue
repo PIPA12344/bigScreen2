@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header style="width: 100%;height: 35px;padding: 0">
-      <div style="float: left;color:#c8c8da ;">资源明细
+      <div style="float: left;color:#c8c8da;margin-top: -5px">资源明细
         <el-select v-model="instance" @change="instanceChange">
           <el-option
             v-for="item in options"
@@ -18,7 +18,7 @@
         <el-col :span="8" style="height:100%">
           <hash-board style="height: 100%" :cpu-usage-rate="cpuUsageRate" :memory-usage-rate="memoryUsageRate" :instance="instance" ref="hashBoard"/>
         </el-col>
-        <el-col :span="16" style="height: 82%" >
+        <el-col :span="16" style="height: 60%" >
           <partition-usage ref="partition" style="margin-left: 20px"></partition-usage>
         </el-col>
       </el-row>

@@ -1,17 +1,18 @@
 import {query} from "@/api/bigScreen/bigScreen";
+
 import axios from "axios";
 export class TableData {
   query = {
     runTimeSearchQuery: 'time() - windows_system_system_up_time{job="windows"}',
     cpuCoresSearchQuery: 'windows_cs_logical_processors{job="windows"}',
-    cpuFrequencyQuery: 'avg by (instance) (windows_cpu_core_frequency_mhz{job="windows"})',
+    // cpuFrequencyQuery: 'avg by (instance) (windows_cpu_core_frequency_mhz{job="windows"})',
     cpuUsageQuery: '100 - (avg by (instance) (irate(windows_cpu_time_total{job="windows",mode="idle"}[2m])) * 100)',
     totalMemoryQuery: 'windows_cs_physical_memory_bytes{job="windows"}',
     memoryUsageRateQuery: '100 - 100 * windows_os_physical_memory_free_bytes{job="windows"} / windows_cs_physical_memory_bytes{job="windows"}',
-    usageRateOfCQuery: '1 - (windows_logical_disk_free_bytes{job="windows",volume=~"C:"}/windows_logical_disk_size_bytes{job="windows",volume=~"C:"})',
-    maxUsageRateQuery: 'max by (instance) (1-windows_logical_disk_free_bytes{job="windows"}/windows_logical_disk_size_bytes{job="windows"})',
-    numOfProcessesQuery: 'windows_os_processes{job="windows"}',
-    numOfServicesQuery: 'sum by (instance) (windows_service_state{job="windows",state="running"})',
+    // usageRateOfCQuery: '1 - ({job="windows",volume=~"C:"}/windows_logical_disk_size_bytes{job="windows",volume=~"C:"})',
+    // maxUsageRateQuery: 'max by (instancwindows_logical_disk_free_bytese) (1-windows_logical_disk_free_bytes{job="windows"}/windows_logical_disk_size_bytes{job="windows"})',
+    // numOfProcessesQuery: 'windows_os_processes{job="windows"}',
+    // numOfServicesQuery: 'sum by (instance) (windows_service_state{job="windows",state="running"})',
   }
   config = {
     headerBGC: 'rgb(15,19,38)',
@@ -36,15 +37,15 @@ export class TableData {
             this.config.data.push({
               instance: '',
               runtime: '',
-              cpuCores:'',
-              cpuFrequency: '',
+              cpuCores: '',
+              // cpuFrequency: '',
               cpuUsage: '',
               totalMemory: '',
               memoryUsage: '',
-              usageRateOfC: '',
-              maxUsageRate: '',
-              numOfProcesses: '',
-              numOfServices: ''
+              // usageRateOfC: '',
+              // maxUsageRate: '',
+              // numOfProcesses: '',
+              // numOfServices: ''
             })
           }
         }
@@ -64,12 +65,12 @@ export class TableData {
             }
             break
           }
-          case 'cpuFrequencyQuery': {
-            for (let j in res.data.result) {
-              this.config.data[j].cpuFrequency = (res.data.result[j].value[1] / 1000).toFixed(2) + ' GHz'
-            }
-            break
-          }
+          // case 'cpuFrequencyQuery': {
+          //   for (let j in res.data.result) {
+          //     this.config.data[j].cpuFrequency = (res.data.result[j].value[1] / 1000).toFixed(2) + ' GHz'
+          //   }
+          //   break
+          // }
           case 'cpuUsageQuery': {
             for (let j in res.data.result) {
               this.config.data[j].cpuUsage = (res.data.result[j].value[1] / 1).toFixed(2) + '%'
@@ -88,30 +89,30 @@ export class TableData {
             }
             break
           }
-          case 'usageRateOfCQuery': {
-            for (let j in res.data.result) {
-              this.config.data[j].usageRateOfC =(res.data.result[j].value[1] * 100).toFixed(2) + '%'
-            }
-            break
-          }
-          case 'maxUsageRateQuery': {
-            for (let j in res.data.result) {
-              this.config.data[j].maxUsageRate = (res.data.result[j].value[1] * 100).toFixed(2) + '%'
-            }
-            break
-          }
-          case 'numOfProcessesQuery': {
-            for (let j in res.data.result) {
-              this.config.data[j].numOfProcesses = (res.data.result[j].value[1])
-            }
-              break
-          }
-          case 'numOfServicesQuery' : {
-            for (let j in res.data.result) {
-              this.config.data[j].numOfServices = (res.data.result[j].value[1])
-            }
-            break
-          }
+          // case 'usageRateOfCQuery': {
+          //   for (let j in res.data.result) {
+          //     this.config.data[j].usageRateOfC =(res.data.result[j].value[1] * 100).toFixed(2) + '%'
+          //   }
+          //   break
+          // }
+          // case 'maxUsageRateQuery': {
+          //   for (let j in res.data.result) {
+          //     this.config.data[j].maxUsageRate = (res.data.result[j].value[1] * 100).toFixed(2) + '%'
+          //   }
+          //   break
+          // }
+          // case 'numOfProcessesQuery': {
+          //   for (let j in res.data.result) {
+          //     this.config.data[j].numOfProcesses = (res.data.result[j].value[1])
+          //   }
+          //     break
+          // }
+          // case 'numOfServicesQuery' : {
+          //   for (let j in res.data.result) {
+          //     this.config.data[j].numOfServices = (res.data.result[j].value[1])
+          //   }
+          //   break
+          // }
         }
       })
     }

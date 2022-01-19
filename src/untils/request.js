@@ -34,3 +34,21 @@ export function request2(config) {
   })
   return instance(config)
 }
+export function request3(config) {
+  const instance =axios.create({
+    baseURL: '/api',
+    timeout: 5000,
+  })
+  instance.interceptors.request.use(config => {
+    return config
+  },error => {
+    console.log(error)
+  })
+  instance.interceptors.response.use(res => {
+    return res.data
+  },error => {
+    console.log(error)
+  })
+  return instance(config)
+}
+
